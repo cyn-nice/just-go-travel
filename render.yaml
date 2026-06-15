@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: just-go-travel
+    runtime: node
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start -w @just-go/api
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: 22.16.0
+      - key: NODE_ENV
+        value: production
+      - key: DATA_STORE
+        value: memory
+      - key: SMS_PROVIDER
+        value: development
+      - key: EXPOSE_DEV_SMS_CODE
+        value: true
+      - key: DEV_SMS_CODE
+        value: 123456
+      - key: JWT_SECRET
+        generateValue: true
+      - key: SMS_CODE_SECRET
+        generateValue: true
+      - key: ADMIN_KEY
+        generateValue: true

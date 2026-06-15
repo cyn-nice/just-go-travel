@@ -5,6 +5,11 @@ import { StoreService } from './store.js'
 import { scoreOptions, TransportService } from './transport.js'
 import { TransportOption, TransportSearch } from './types.js'
 
+@Controller('health')
+export class HealthController {
+  @Get() check() { return { status: 'ok', time: new Date().toISOString() } }
+}
+
 class SearchDto implements TransportSearch {
   @IsString() origin!: string; @IsString() destination!: string; @IsDateString() departureDate!: string
   @IsOptional() @IsDateString() returnDate?: string; @IsInt() @Min(1) @Max(9) travelers!: number

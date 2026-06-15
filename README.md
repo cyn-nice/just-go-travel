@@ -44,6 +44,16 @@ TENCENT_SMS_TEMPLATE_ID=
 
 当前验证码状态保存在单个 API 进程内。多实例生产部署时，应将验证码、发送频控和错误次数迁移到 Redis 等共享存储。
 
+## 免费部署
+
+仓库包含 `render.yaml`，可在 Render 上创建单个免费 Web Service。服务会先构建 Vue 前端和 NestJS API，再由 API 进程同域托管 H5 页面与 `/api`。
+
+- 健康检查：`/api/health`
+- 免费演示默认使用内存数据和演示验证码 `123456`
+- Render 免费实例休眠或重新部署后，内存收藏可能清空
+- 需要长期保存收藏时，将 `DATA_STORE` 改为 `mysql`，并把 `DATABASE_URL` 配置为 TiDB Cloud 等 MySQL 兼容数据库连接串
+- 正式开放登录前，应配置腾讯云短信并关闭 `EXPOSE_DEV_SMS_CODE`
+
 在 PowerShell 执行策略限制 `npm.ps1` 的 Windows 环境中，可将以上命令写为 `npm.cmd install` 和 `npm.cmd run dev`。
 
 当前 `DATA_STORE=memory` 可免数据库启动并完成全部用户流程。设置 `DATA_STORE=mysql` 后，API 会连接 MySQL、同步种子目的地并持久化用户收藏；数据表定义位于 `database/init.sql`。安装 Docker 后可运行 `docker compose up -d mysql`。

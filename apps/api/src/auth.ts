@@ -104,7 +104,7 @@ export class SmsService {
       expiresIn: this.expiresInSeconds,
       resendAfter: this.resendAfterSeconds,
       provider: this.isProductionSms() ? 'tencent' : 'development',
-      devCode: this.isProductionSms() ? undefined : code,
+      devCode: this.isProductionSms() || (process.env.NODE_ENV === 'production' && process.env.EXPOSE_DEV_SMS_CODE !== 'true') ? undefined : code,
     }
   }
 

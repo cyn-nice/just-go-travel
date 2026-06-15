@@ -30,7 +30,7 @@ async function send() {
   sending.value = true
   try {
     const data = await auth.sendCode(login.phone)
-    showToast(data.devCode ? `开发验证码：${data.devCode}` : '验证码已发送')
+    showToast(data.devCode ? `演示验证码：${data.devCode}` : '验证码已发送')
     startCountdown(data.resendAfter || 60)
   } catch (error) {
     showFailToast(getErrorMessage(error))
