@@ -3,7 +3,8 @@ services:
     name: just-go-travel
     runtime: node
     plan: free
-    buildCommand: npm ci && npm run build
+    # buildCommand: npm ci --include=dev && npm run build
+    buildCommand: npm install --include-dev && npm run build
     startCommand: npm run start -w @just-go/api
     healthCheckPath: /api/health
     autoDeploy: true
