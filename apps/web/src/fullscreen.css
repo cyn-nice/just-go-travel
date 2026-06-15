@@ -1,0 +1,734 @@
+/* Full-screen H5 layout and a more prominent primary navigation. */
+:root {
+  --tabbar-height: 70px;
+}
+
+/* Seasonal page: original full-image destination card presentation. */
+.home-page .section-head {
+  margin-top: calc(18px + env(safe-area-inset-top));
+}
+
+.home-page .destination-card {
+  display: block;
+  height: 330px;
+  color: #fff;
+  background: #222;
+  border-radius: 22px;
+  box-shadow: 0 12px 30px rgb(40 21 13 / 20%);
+}
+
+.home-page .destination-card > .van-image {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.home-page .destination-card .van-image__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 22px;
+}
+
+.home-page .card-gradient {
+  display: block;
+  background: linear-gradient(180deg, transparent 25%, rgb(8 6 5 / 91%) 100%);
+}
+
+.home-page .rank {
+  top: 16px;
+  left: 16px;
+  min-width: auto;
+  padding: 7px 11px;
+}
+
+.home-page .card-copy {
+  position: absolute;
+  right: 18px;
+  bottom: 17px;
+  left: 18px;
+  display: block;
+  height: auto;
+  padding: 0;
+  text-shadow: none;
+}
+
+.home-page .card-title strong {
+  font-size: 31px;
+}
+
+.home-page .card-copy p {
+  margin: 4px 0 11px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.home-page .tag-row {
+  gap: 6px;
+}
+
+.home-page .tag-row span {
+  padding: 5px 9px;
+  color: #fff;
+  background: rgb(255 255 255 / 15%);
+  border: 1px solid rgb(255 255 255 / 25%);
+  font-size: 11px;
+}
+
+.home-page .card-meta {
+  gap: 12px;
+  margin-top: 15px;
+  padding-top: 13px;
+  color: #fff;
+  border-top-color: rgb(255 255 255 / 22%);
+  font-size: 13px;
+}
+
+.home-page .card-meta b:nth-child(2) {
+  color: rgb(255 255 255 / 75%);
+}
+
+.home-page .destination-list {
+  gap: 16px;
+}
+
+@media (min-width: 760px) {
+  .home-page .destination-card {
+    height: 400px;
+  }
+}
+
+html,
+body,
+#app {
+  width: 100%;
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  padding: 0 !important;
+}
+
+.app-shell {
+  width: 100%;
+  max-width: none;
+  min-height: 100dvh;
+  margin: 0;
+  border-radius: 0 !important;
+  box-shadow: none;
+}
+
+.page {
+  width: 100%;
+  min-height: 100dvh;
+  padding-bottom: calc(var(--tabbar-height) + 34px + env(safe-area-inset-bottom));
+}
+
+.detail-page,
+.legal-page {
+  width: 100%;
+  max-width: none;
+  min-height: 100dvh;
+  margin: 0;
+  border-radius: 0 !important;
+}
+
+.detail-actions {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: none;
+  transform: none;
+}
+
+.main-tabbar.van-tabbar {
+  height: calc(var(--tabbar-height) + env(safe-area-inset-bottom));
+  padding: 7px max(10px, env(safe-area-inset-left)) env(safe-area-inset-bottom) max(10px, env(safe-area-inset-right));
+  background: #fffdf9;
+  border-top: 1px solid #ece7df;
+  box-shadow: 0 -8px 30px rgb(47 36 22 / 10%);
+}
+
+.main-tabbar .van-tabbar-item {
+  gap: 3px;
+  min-height: 62px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.main-tabbar .van-tabbar-item__icon {
+  margin-bottom: 1px;
+  font-size: 27px;
+}
+
+.main-tabbar .van-tabbar-item--active {
+  background: transparent;
+}
+
+.main-tabbar .van-tabbar-item--active .van-tabbar-item__icon {
+  transform: translateY(-1px);
+}
+
+.destination-card > .van-image,
+.detail-cover > .van-image {
+  position: absolute;
+  inset: 0;
+}
+
+.destination-card .van-image__img,
+.detail-cover .van-image__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.favorite-card > .van-image {
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.favorite-card > .van-image .van-image__img {
+  width: 110px;
+  height: 98px;
+  object-fit: cover;
+}
+
+.search-panel .van-cell {
+  padding-top: 13px;
+  padding-bottom: 13px;
+}
+
+.search-panel .van-field__left-icon {
+  color: #ff6542;
+}
+
+.season-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 -18px;
+  min-height: 132px;
+  padding: calc(18px + env(safe-area-inset-top)) 20px 18px;
+  overflow: hidden;
+  color: #fff;
+  background: #d98c5f;
+  border-radius: 0 0 24px 24px;
+  box-shadow: 0 10px 28px rgb(67 42 25 / 16%);
+}
+
+.season-header-image,
+.season-header-shade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.season-header-image {
+  object-fit: cover;
+  object-position: center 54%;
+}
+
+.season-header-shade {
+  background: linear-gradient(90deg, rgb(38 31 24 / 70%) 0%, rgb(38 31 24 / 25%) 58%, rgb(38 31 24 / 5%) 100%);
+}
+
+.season-header-copy {
+  position: relative;
+  z-index: 1;
+}
+
+.season-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  background: rgb(255 255 255 / 18%);
+  border: 1px solid rgb(255 255 255 / 25%);
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+}
+
+.season-header small {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.season-header h1 {
+  margin: 8px 0 1px;
+  font-size: 29px;
+  line-height: 1.1;
+  text-shadow: 0 2px 10px rgb(0 0 0 / 32%);
+}
+
+.season-header-copy p {
+  margin: 5px 0 0;
+  font-size: 12px;
+  opacity: .88;
+}
+
+.season-weather {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  align-self: flex-end;
+  padding: 6px 9px;
+  font-size: 10px;
+  font-weight: 600;
+  background: rgb(255 255 255 / 84%);
+  color: #70513c;
+  border-radius: 999px;
+  box-shadow: 0 5px 14px rgb(0 0 0 / 12%);
+}
+
+.inline-month-selector {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 3px 0 0;
+  padding: 0;
+  color: #171717;
+  background: transparent;
+  border: 0;
+}
+
+.inline-month-selector b {
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.inline-month-selector .van-icon {
+  color: #ff6542;
+  font-size: 14px;
+}
+
+.home-page .section-head {
+  margin: 14px 2px 8px;
+}
+
+.seasonal-section-head small {
+  font-size: 9px;
+}
+
+.home-page .filters .van-dropdown-menu__bar {
+  height: 40px;
+}
+
+.home-page .destination-card {
+  display: block;
+  height: 180px;
+  color: #fff;
+  background: #222;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgb(42 28 18 / 14%);
+}
+
+.home-page .destination-card > .van-image {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.home-page .destination-card .van-image__img {
+  border-radius: 18px;
+}
+
+.home-page .card-gradient {
+  display: none;
+}
+
+.home-page .rank {
+  top: 10px;
+  left: 10px;
+  min-width: 27px;
+  padding: 5px 8px;
+  text-align: center;
+}
+
+.home-page .card-copy {
+  position: absolute;
+  right: 14px;
+  bottom: 12px;
+  left: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-width: 0;
+  height: calc(100% - 24px);
+  padding: 0;
+  text-shadow: 0 1px 5px rgb(0 0 0 / 75%);
+}
+
+.home-page .card-title strong {
+  font-size: 25px;
+}
+
+.home-page .card-title span {
+  color: rgb(255 255 255 / 72%);
+  font-size: 11px;
+}
+
+.home-page .card-copy p {
+  margin: 3px 0 7px;
+  color: rgb(255 255 255 / 86%);
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.home-page .card-meta {
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  padding-top: 8px;
+  color: rgb(255 255 255 / 90%);
+  border-top-color: rgb(255 255 255 / 24%);
+  font-size: 10px;
+}
+
+.home-page .card-meta b:nth-child(2) {
+  overflow: hidden;
+  max-width: 44%;
+  color: rgb(255 255 255 / 72%);
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.home-page .card-meta em {
+  color: #ff6542;
+}
+
+.home-page .tag-row {
+  gap: 4px;
+}
+
+.home-page .tag-row span {
+  padding: 3px 7px;
+  color: #fff;
+  background: rgb(255 255 255 / 16%);
+  border: 1px solid rgb(255 255 255 / 24%);
+  font-size: 9px;
+  text-shadow: none;
+}
+
+.home-page .destination-list {
+  gap: 10px;
+}
+
+.home-page .source-note {
+  margin-top: 8px;
+}
+
+@media (min-width: 760px) {
+  .page {
+    padding-right: 32px;
+    padding-left: 32px;
+  }
+
+  .hero,
+  .simple-header,
+  .profile-header {
+    margin-right: -32px;
+    margin-left: -32px;
+    padding-right: 36px;
+    padding-left: 36px;
+  }
+
+  .season-header {
+    margin-right: -32px;
+    margin-left: -32px;
+    padding-right: 36px;
+    padding-left: 36px;
+  }
+
+  .destination-list,
+  .transport-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .destination-card {
+    height: 400px;
+  }
+
+  .home-page .destination-card {
+    height: 260px;
+  }
+
+  .search-panel {
+    max-width: 760px;
+  }
+
+  .content-block {
+    padding-right: clamp(28px, 8vw, 120px);
+    padding-left: clamp(28px, 8vw, 120px);
+  }
+
+  .quick-facts {
+    max-width: 760px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .detail-actions {
+    padding-right: clamp(18px, 12vw, 180px);
+    padding-left: clamp(18px, 12vw, 180px);
+  }
+}
+
+/* Final seasonal card override: restore the original large-image design. */
+.home-page .section-head {
+  margin-top: calc(18px + env(safe-area-inset-top));
+}
+
+.home-page .destination-card {
+  display: block;
+  height: 180px;
+  color: #fff;
+  background: #222;
+  border-radius: 22px;
+  box-shadow: 0 12px 30px rgb(40 21 13 / 20%);
+}
+
+.home-page .destination-card > .van-image {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.home-page .destination-card .van-image__img {
+  border-radius: 22px;
+}
+
+.home-page .card-gradient {
+  display: block;
+  background: linear-gradient(180deg, transparent 25%, rgb(8 6 5 / 91%) 100%);
+}
+
+.home-page .rank {
+  top: 16px;
+  left: 16px;
+  min-width: auto;
+  padding: 7px 11px;
+}
+
+.home-page .card-copy {
+  position: absolute;
+  right: 15px;
+  bottom: 12px;
+  left: 15px;
+  display: block;
+  height: auto;
+  padding: 0;
+  text-shadow: none;
+}
+
+.home-page .card-title strong {
+  font-size: 25px;
+}
+
+.home-page .card-copy p {
+  margin: 4px 0 7px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.25;
+}
+
+.home-page .tag-row {
+  gap: 6px;
+}
+
+.home-page .tag-row span {
+  padding: 5px 9px;
+  color: #fff;
+  background: rgb(255 255 255 / 15%);
+  border: 1px solid rgb(255 255 255 / 25%);
+  font-size: 11px;
+}
+
+.home-page .card-meta {
+  gap: 12px;
+  margin-top: 9px;
+  padding-top: 8px;
+  color: #fff;
+  border-top-color: rgb(255 255 255 / 22%);
+  font-size: 13px;
+}
+
+.home-page .card-meta b:nth-child(2) {
+  color: rgb(255 255 255 / 75%);
+}
+
+.home-page .destination-list {
+  gap: 10px;
+}
+
+@media (min-width: 760px) {
+  .home-page .destination-card {
+    height: 300px;
+  }
+}
+
+/* Transport search: clear, tap-friendly city selection on mobile. */
+.transport-page .search-panel {
+  padding: 14px;
+}
+
+.city-route-selector {
+  position: relative;
+  display: grid;
+  gap: 10px;
+}
+
+.city-select {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  width: 100%;
+  min-height: 76px;
+  padding: 13px 42px 13px 16px;
+  color: #171717;
+  text-align: left;
+  background: #f7f4ee;
+  border: 1px solid #eee7dc;
+  border-radius: 15px;
+  appearance: none;
+}
+
+.city-select span {
+  grid-column: 1 / -1;
+  color: #999083;
+  font-size: 11px;
+}
+
+.city-select strong {
+  align-self: end;
+  overflow: hidden;
+  font-size: 22px;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.city-select strong.placeholder {
+  color: #b6aea3;
+  font-weight: 500;
+}
+
+.city-select .van-icon {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  color: #aaa198;
+  transform: translateY(-50%);
+}
+
+.swap-city {
+  position: absolute;
+  z-index: 2;
+  top: 71px;
+  right: 22px;
+  display: grid;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  color: #fff;
+  background: #ff6542;
+  border: 4px solid #fff;
+  border-radius: 50%;
+  place-items: center;
+  transform: rotate(90deg);
+}
+
+.date-fields {
+  margin-top: 12px;
+  overflow: hidden;
+  border: 1px solid #eee7dc;
+  border-radius: 15px;
+}
+
+.transport-page .date-fields .van-cell {
+  min-height: 52px;
+}
+
+/* Profile login: calmer hierarchy and clearer SMS verification state. */
+.profile-header p {
+  max-width: 310px;
+  margin: 8px 0 0;
+  color: rgb(255 255 255 / 68%);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.login-card-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.login-card-title small {
+  color: #ff6542;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.login-card-title h2 {
+  margin-top: 4px;
+  font-size: 26px;
+}
+
+.login-card-title > .van-icon {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  color: #ff6542;
+  background: #fff0eb;
+  border-radius: 15px;
+  font-size: 24px;
+  place-items: center;
+}
+
+.login-fields {
+  overflow: hidden;
+  border: 1px solid #eee8df;
+  border-radius: 15px;
+}
+
+.login-fields .van-cell {
+  min-height: 58px;
+}
+
+.login-security-note {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 12px 4px 18px;
+  color: #91897e;
+  font-size: 11px;
+}
+
+.user-card > div {
+  display: grid;
+  gap: 4px;
+}
+
+.user-card > div small {
+  color: #999;
+  font-size: 10px;
+  font-weight: 500;
+}
