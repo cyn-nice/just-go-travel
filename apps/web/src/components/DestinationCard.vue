@@ -5,10 +5,15 @@ defineProps<{ item: Destination; rank: number }>()
 
 <template>
   <article class="destination-card" @click="$router.push(`/destination/${item.id}`)">
-    <van-image width="100%" height="100%" fit="cover" :lazy-load="rank > 3" :src="item.cardCover || item.cover" :alt="item.name">
-      <template #loading><van-loading type="spinner" color="#ff6542" /></template>
-      <template #error><van-icon name="photo-fail" size="32" /></template>
-    </van-image>
+    <img
+      :src="item.cardCover || item.cover"
+      :alt="item.name"
+      :loading="rank === 1 ? 'eager' : 'lazy'"
+      :fetchpriority="rank === 1 ? 'high' : 'auto'"
+      decoding="async"
+      width="800"
+      height="407"
+    />
     <div class="rank">TOP {{ rank }}</div>
     <div class="card-gradient"></div>
     <div class="card-copy">
