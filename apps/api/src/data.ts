@@ -73,26 +73,34 @@ const seeds: Seed[] = [
   { name: '三亚', province: '海南', image: 'photo-1507525428034-b723cf961d3e', slogan: '把冬天换成海岛阳光', reason: '冬春气候舒适，海湾和热带雨林可组合游玩。', months: [1,2,3,4,11,12], days: 4, styles: ['relax','nature','food'], score: 82, features: ['热带海湾','雨林徒步','海鲜夜市'], spots: ['亚龙湾','蜈支洲岛'] },
 ]
 
-export const destinations: Destination[] = seeds.map((seed, index) => ({
-  id: index + 1,
-  name: seed.name,
-  province: seed.province,
-  cover: localDestinationImages[index] ?? img(destinationImageQueries[index], index + 101),
-  slogan: seed.slogan,
-  reason: seed.reason,
-  bestMonths: seed.months,
-  days: seed.days,
-  budgetMin: 0,
-  budgetMax: 0,
-  styles: seed.styles,
-  score: seed.score,
-  features: seed.features,
-  route: [`抵达${seed.name}`, seed.spots[0], seed.spots[1], '自由探索与返程'],
-  tips: ['根据天气调整户外行程', '热门景点建议错峰前往', '出发前确认交通与开放时间'],
-  attractions: seed.spots.map((name, spotIndex) => ({
-    id: (index + 1) * 100 + spotIndex + 1,
-    name,
-    description: `${name}是${seed.name}具有代表性的旅行体验，适合安排在核心行程中。`,
-    tag: seed.features[spotIndex] || '必体验',
-  })),
-}))
+export const destinations: Destination[] = seeds.map((seed, index) => {
+  const cover = localDestinationImages[index] ?? img(destinationImageQueries[index], index + 101)
+  const cardCover = cover.startsWith('/images/destinations/')
+    ? cover.replace('/images/destinations/', '/images/destinations/cards/')
+    : cover
+
+  return {
+    id: index + 1,
+    name: seed.name,
+    province: seed.province,
+    cover,
+    cardCover,
+    slogan: seed.slogan,
+    reason: seed.reason,
+    bestMonths: seed.months,
+    days: seed.days,
+    budgetMin: 0,
+    budgetMax: 0,
+    styles: seed.styles,
+    score: seed.score,
+    features: seed.features,
+    route: [`抵达${seed.name}`, seed.spots[0], seed.spots[1], '自由探索与返程'],
+    tips: ['根据天气调整户外行程', '热门景点建议错峰前往', '出发前确认交通与开放时间'],
+    attractions: seed.spots.map((name, spotIndex) => ({
+      id: (index + 1) * 100 + spotIndex + 1,
+      name,
+      description: `${name}是${seed.name}具有代表性的旅行体验，适合安排在核心行程中。`,
+      tag: seed.features[spotIndex] || '必体验',
+    })),
+  }
+})

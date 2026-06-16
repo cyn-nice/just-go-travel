@@ -4,7 +4,7 @@ export type Strategy = 'value' | 'comfort' | 'budget'
 
 export interface Attraction { id: number; name: string; description: string; tag: string }
 export interface Destination {
-  id: number; name: string; province: string; cover: string; slogan: string; reason: string
+  id: number; name: string; province: string; cover: string; cardCover?: string; slogan: string; reason: string
   bestMonths: number[]; days: number; budgetMin: number; budgetMax: number; styles: TravelStyle[]
   score: number; features: string[]; route: string[]; tips: string[]; attractions: Attraction[]
 }

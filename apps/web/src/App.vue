@@ -2,7 +2,13 @@
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 const route = useRoute(), router = useRouter()
-const active = computed({ get: () => String(route.meta.tab || ''), set: value => router.push(value === 'home' ? '/' : `/${value}`) })
+const active = computed({
+  get: () => String(route.meta.tab || ''),
+  set: value => {
+    const path = value === 'home' ? '/' : `/${value}`
+    router.push(path).then(() => window.scrollTo({ top: 0, left: 0 }))
+  },
+})
 </script>
 
 <template>
